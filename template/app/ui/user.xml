@@ -1,0 +1,29 @@
+ <context text|password|msg='class=textbox' &a="td.align=center td.colspan=2 td.class=textbox" />
+ <table      cellpadding="2" width="300">
+   <map:title param='USER DEMO|2' />
+   <row  >User Name:  <text name='username' /></row>
+   <row  >Password:   <password name='password' /></row>
+   <row &a><submit value='Submit' ajax='out:username password'/></row>
+   <row &a>
+   	 <msg name='out' call="String greeting:@greeting"/></row> 
+   <row &a> <msgfmt format='msgs.thankYouLabel' args='username' /></row>
+   <row &a>	<link image='Earth.gif' call='#index'/></row>
+   <row &a>	<array>Yes<checkbox name='pick'/> </array> </row>
+   <row &a> <checkboxs name='picks' data='AA,BB,CC'/> </row>
+   <row &a> <radiobutton name='pickr' data='AA,BB,CC'/> </row>
+   <row &a><array>ROLES<select  name='role'  data='Guest,Manager,Admin' /></array></row>
+   <row &a><array>ROLES<selects name='roles' data='Guest,Manager,Admin' /></array></row>
+</table>    
+======================================================
+<method name='greeting'>
+      if(isBlank(username)) return "";
+      else return "Welcome to JSF "+ username;
+</method>
+
+
+
+
+
+  
+  
+ 

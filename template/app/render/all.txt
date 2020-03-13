@@ -1,0 +1,62 @@
+$$_container
+<div class="container">
+     ${body}
+</div>
+__end
+
+$$_container_row
+  <div  class='row' >
+    ${body}
+  </div>
+__end
+
+
+$$_table
+       <table ${attr} >
+           ${body}
+       </table>
+__end
+
+$$_table_row
+        <TR ${attr} >  
+           ${body}  
+        </TR>
+__end
+
+$$_menu_body
+<nav class="navbar navbar-default">
+ <div class="container-fluid">
+    ${value}			
+ </div>   			
+ </nav>
+__end
+
+$$_menu_item
+   <div class="navbar-header">
+     <a class="navbar-brand" href="${src}">${value}</a>
+   </div>
+__end
+
+$$_menu_dropdown_body
+<div>
+    <ul class="nav navbar-nav">
+    <li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">${title}<b class="caret"></b></a>
+    <ul class="dropdown-menu">
+     ${value}								
+    </ul>        
+   </li>
+  </ul>
+  </div>
+__end
+
+$$_menu_dropdown_element
+      <li><a href="${src}">${value}</a></li>
+__end
+
+$$_div_row
+ <div class="col-md-6" >
+   ${body}
+ </div>
+__end
+

@@ -1,0 +1,6 @@
+<app name=web folder=C:\myApp\tomcat6\webapps\spring>
+  <path package=com.jm>
+        spring:mySpring
+  </path>
+</app>
+

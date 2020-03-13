@@ -1,0 +1,206 @@
+  $$_table
+  @Entity
+  @Table( name = "${value}" )
+  __end
+
+ $$_namequery
+  @NamedQueries({
+	@NamedQuery(
+	name = "find${value}ByName",
+	query = "from ${value} p where p.name = :name"
+	)
+  })
+ __end 
+ 
+  $$_id_emb
+@EmbeddedId
+  __end
+  
+  $$_id_uuid
+     @Id
+     @GeneratedValue(generator = "uuid")
+     @GenericGenerator(name = "uuid", strategy = "uuid")
+     @Column(name = "${map.classname}_${value}", unique = true, nullable = false)
+  __end
+  
+  $$_id
+      @Id
+      @GeneratedValue
+      @Column(name = "${map.classname}_${value}", unique = true, nullable = false)
+  __end
+
+  $$_id_ide
+    @Id
+    @GeneratedValue(strategy = IDENTITY)
+    @Column(name = "${map.classname}_${value}", unique = true, nullable = false)
+ __end
+
+  $$_id_inc
+    @Id
+    @GeneratedValue(generator="increment")
+    @GenericGenerator(name="increment", strategy = "increment")
+    @Column(name = "${map.classname}_${value}",unique = true, nullable = false)
+  __end
+  
+  $$_id_seq
+     @Id
+     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="${sample}")
+     @SequenceGenerator(
+         name="${sample}",
+         initialValue=1000,
+         sequenceName="${sample}",
+            allocationSize=20
+        )
+     @Column(name = "${map.classname}_${value}", unique = true, nullable = false)
+  __end
+  
+   $$_id_table
+       @Id
+       @GeneratedValue(strategy=GenerationType.TABLE, generator="${sample}")
+         @TableGenerator(
+         name="${sample}",
+         table="GENERATOR_TABLE",
+         pkColumnName = "key",
+         valueColumnName = "next",
+         pkColumnValue="course",
+        allocationSize=30
+    )
+    @Column(name = "${map.classname}_${value}", unique = true, nullable = false)
+   __end
+   
+   $$_id_fore
+       @org.hibernate.annotations.GenericGenerator(
+        name = "${map.sample}",
+        strategy ="foreign",
+        parameters = {@org.hibernate.annotations.Parameter(
+        name = "property", value = "${map.mapby}")})
+    @Id 
+    @GeneratedValue(generator = "${map.sample}")
+    @Column(name = "${map.classname}_${value}", unique = true, nullable = false)
+   __end
+   
+   $$_overrides
+    @Embedded
+    @AttributeOverrides({
+    <#list fields as field>
+        @AttributeOverride(name   = "${field.name}",
+        column = @Column(name="${field.overhead}_${field.uname}", length = 255)),
+    </#list>   
+        })
+  __end
+
+  $$_date
+     @Temporal(TemporalType.TIMESTAMP)
+     @Column(name = "${value}")
+  __end
+
+  $$_prop
+     @Column(name = "${value}",nullable = false,length = 255)
+ __end
+ 
+ $$_manytomany_master
+  @ManyToMany(cascade = CascadeType.ALL)
+  @JoinTable(name = "${map.classname}_${map.sclassname}", joinColumns = 
+  { @JoinColumn(name = "${map.classname}_ID") }, 
+  inverseJoinColumns = { @JoinColumn(name = "${map.sclassname}_ID") })
+ __end
+ 
+ $$_manytomany_slave
+ @ManyToMany(fetch = FetchType.EAGER, mappedBy = "${map.mapby}")
+ __end
+ 
+ $$_onetoone_master
+     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+     @PrimaryKeyJoinColumn
+ __end
+ 
+ $$_onetoone_slave
+    @OneToOne(optional = false, fetch = FetchType.EAGER)
+    @PrimaryKeyJoinColumn
+ __end
+
+  $$_manytoone
+     @ManyToOne(fetch = FetchType.EAGER)
+     @JoinColumn(name = "${map.id}",nullable = false)
+  __end
+  
+
+  $$_onetomany
+     	@OneToMany(fetch = FetchType.EAGER, mappedBy = "${map.mapby}",
+                  cascade={CascadeType.ALL})
+        @org.hibernate.annotations.Cascade
+        ({org.hibernate.annotations.CascadeType.DELETE_ORPHAN})
+   __end
+   
+   $$_onetomany_list
+     	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER),
+        mappedBy = "${map.mapby}")
+        @org.hibernate.annotations.IndexColumn(name = "X_POSITION")
+        @org.hibernate.annotations.BatchSize(size = 10)
+   __end
+   
+   $$_onetoone_m
+       @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+       @PrimaryKeyJoinColumn
+   __end
+   
+   $$_onetoone_s
+    @OneToOne(optional = false, fetch = FetchType.EAGER)
+    @PrimaryKeyJoinColumn
+   __end
+   
+  $$_import
+        import javax.persistence.*;
+   __end
+  
+  $$_version 
+    @Version
+    @Column(name = "OBJ_${value}", columnDefinition = "integer DEFAULT 0", 
+            nullable = false)
+  __end
+  
+  $$_version_t
+  @Version
+  @org.hibernate.annotations.Source(SourceType.DB)
+  @org.hibernate.annotations.Generated(GenerationTime.ALWAYS)
+  @Column(name = "OBJ_${value}") 
+  @Temporal(TemporalType.TIMESTAMP)
+  __end
+  
+  $$_autodate
+        @Temporal(TemporalType.TIMESTAMP)
+	@Generated(GenerationTime.ALWAYS) 
+	@Column(name="${value}", insertable=false,updatable=false)
+  __end
+  
+  $$_coll_set
+    @SuppressWarnings({"unchecked", "deprecation"})
+    @CollectionOfElements(
+       targetElement=java.lang.String.class,
+       fetch=FetchType.EAGER)
+    @JoinTable(name = "${map.classname}_${value}", 
+               joinColumns = { @JoinColumn(name = "${map.id}") })
+    @Column(name = "${value}", nullable = false,length = 255)
+   
+  __end
+  
+  $$_coll_list
+      @SuppressWarnings({"unchecked", "deprecation"})
+    @CollectionOfElements(
+       targetElement=java.lang.String.class,
+       fetch=FetchType.EAGER)
+    @JoinTable(name = "${map.classname}_${value}", 
+               joinColumns = { @JoinColumn(name = "${map.id}") })
+    @IndexColumn(name="XINDEX",base=1)
+    @Column(name = "${value}", nullable = false,length = 255)
+  __end
+  
+  $$_coll_map
+    @SuppressWarnings({"unchecked", "deprecation"})
+    @CollectionOfElements(
+       targetElement=java.lang.String.class,
+       fetch=FetchType.EAGER)
+    @JoinTable(name = "${map.classname}_${value}", 
+               joinColumns = { @JoinColumn(name = "${map.id}") })
+    @Column(name = "${value}", nullable = false,length = 255)
+ __end

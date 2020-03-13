@@ -1,0 +1,22 @@
+var ${var} = Ext.create('Ext.form.FormPanel', {
+    itemId      : 'formPanel',
+    frame       : true,
+    layout      : 'anchor',
+    defaultType : 'textfield',
+    defaults    : {
+        anchor     : '-10',
+        labelWidth : 65
+    },
+    ${items}
+    buttons : [
+        {
+            text    : 'Submit',
+            handler : function() {
+                var formPanel = this.up('#formPanel'),
+                    vals      = formPanel.getValues(),
+                    greeting  = ${temp}.apply(vals);
+                Ext.Msg.alert('Hello!', greeting);
+            }
+        }
+    ]
+});

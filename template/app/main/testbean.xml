@@ -1,0 +1,6 @@
+<app name=web folder=C:\AI-Prog\SpringORMwithTX>
+  <modelproc package='com.jm.model'>
+      test:hibernateanno
+  </modelproc>
+</app>
+

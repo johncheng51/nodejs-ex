@@ -1,0 +1,40 @@
+$$_map
+text->textfield,msg->property,password->password
+__end
+
+$$_printitem 
+     <s:${type} id='${name}' name='${name}' ${attr}  />
+__end
+
+$$_msg 
+     <s:${type} value='${value}'  />
+__end
+
+$$_select 
+     <s:select id='${name}' name='${name}' ${attr} 
+     list='${argslist}' listKey="key" listValue="value"  />  
+__end
+
+$$_form 
+ <table border="2"  bgcolor="green" width="300">
+      <s:form ${attr}  theme="simple">
+          ${value}
+      </s:form>
+ </table>
+__end
+
+$$_css 
+     <#list words as word>
+       <link rel="stylesheet" type="text/css" href="../resources/css/${word}.css">
+     </#list>
+__end
+
+$$_js 
+     <#list words as word>
+        <script type="text/javascript" src="../resources/css/${word}.js">
+     </#list>
+__end
+
+$$_link 
+     <a href="<s:url action='${action}'/>">${value}</a>
+__end

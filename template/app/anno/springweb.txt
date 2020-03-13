@@ -1,0 +1,57 @@
+$$_servlet
+     <servlet>
+        <servlet-name>${currentname}</servlet-name>
+       <servlet-class>
+            org.springframework.web.servlet.DispatcherServlet
+        </servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>${currentname}</servlet-name>
+        <#list words as word>
+         <url-pattern>${word}</url-pattern>
+        </#list>
+    </servlet-mapping>    
+__end
+
+$$_java
+ package ${package};
+ import org.springframework.stereotype.Controller;
+ import org.springframework.web.bind.annotation.RequestMapping;
+ import org.springframework.web.servlet.ModelAndView;
+
+@Controller
+public class ${classname} {
+@RequestMapping("${path}")
+public ModelAndView ${method}() 
+        {
+ 
+          String message = "<br><div style='text-align:center;'>"+
+			"<h3>********** Hello World, Spring MVC Tutorial</h3>"+
+                        "This message is coming from CrunchifyHelloWorld.java **********</div><br><br>";
+	  return new ModelAndView("welcome", "message", message);
+	}
+}
+__end
+
+$$_mvc
+       <beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans     
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc 
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context.xsd">
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView" />
+		<property name="prefix" value="/WEB-INF/jsp/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+    <context:component-scan base-package="${value}" />
+    </beans>
+__end

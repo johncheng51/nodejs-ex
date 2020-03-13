@@ -1,0 +1,85 @@
+$$_input 
+ @Input() ${value}:string;
+__end
+
+$$_msg
+    <strong>{{${name}}}</strong>
+__end
+
+$$_output 
+   @Output() ${value}: EventEmitter<String>;
+__end
+
+$$_method  
+  ${value}_XXX(text:String){
+  this.${value}.emit(text);
+  }
+__end
+
+$$_button 
+  <input type='button' value='Click ${value}' 
+  (click)='${value}_XXX("Send by ${class} ${value}")'/>
+__end
+
+$$_publisher
+  this.${value}  = new EventEmitter();
+__end
+
+$$_caller
+  ${value}(text:string){
+	alert(text);
+}
+__end
+
+$$_for  
+ <${type} *ngFor="let ${key} of ${list}">
+     ${body}
+ </${type}>	
+__end
+
+$$_app  
+ <${type} ${attr} [${value}]="${value}"  >
+ </${type}>	
+__end
+
+$$_printitem 
+         <input type="${type}" ${attr} [(ngModel)]='map["${name}"]'/>
+         <strong *ngIf="require['${name}']">***</strong>
+__end
+
+$$_radio
+    <input type="radio" [value]="${value}" [(ngModel)]='map["${name}"]' />
+__end
+
+$$_route
+  <a [routerLink]="['/${name}']">${value}</a>
+__end
+
+$$_imports
+import { ${classname}Component } from  './${name}/${name}.component';
+__end
+
+$$_routes
+{ path: '${name}', component: ${classname}Component },
+__end
+
+$$_components
+${classname}Component,
+__end
+$$_if
+   *ngIf='map["${key}"]${value}'
+__end  
+
+$$_select
+ <select [(ngModel)]='map["${name}"]'>
+  <option *ngFor="let o of ${name}s" [value]="o.key">{{o.value}}</option>
+ </select><strong *ngIf="require['${name}']">***</strong>
+__end
+
+$$_optiondata
+   {key:"${key}",value:"${value}"},
+__end
+
+$$_selectdata
+${key}s=[${value}];
+__end

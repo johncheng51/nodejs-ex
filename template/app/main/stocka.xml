@@ -1,0 +1,7 @@
+<app folder=C:\AI-Prog\SpringORMwithTX>
+  <modelproc package='com.jm.model'>
+       stocka:hibernateanno
+       stockitem:hibernateanno
+   </modelproc>
+</app>
+

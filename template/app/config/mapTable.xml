@@ -1,0 +1,251 @@
+  <map name=title type=string >
+   <row class=signupcellborder >
+    <table cellspacing=2 td='colspan=###1 align=middle' >
+    <row td.height='15' class=NONE >
+    <label value='###0' td='class=signupsubhead3' />
+    </row></table></row>
+  </map>
+
+  <map name=test type=template>
+   <row class=signupcellborder >
+    <table cellspacing=1 td='colspan=2 align=middle' >
+    <row class=NONE td.class='signupsubhead3'><div name=###0></div></row>
+    <row class=NONE td.class='signupsubhead3'><div name=###1></div></row>
+    </table></row>
+  </map>
+   
+  <map name=titleHolder type=string >
+   <row class=signupcellborder >
+    <table cellspacing=1 td='colspan=###1 align=middle' >
+    <row class=NONE td.class='signupsubhead3'>
+     <div name=###0  >TEST</div>
+    </row></table></row>
+  </map>
+    
+  <map name=radio type=string>
+    <array><radiobutton  name=###0_0 value='Y'/> ###1 
+           <radiobutton  name=###0_1 value='N'/> ###2</array>
+  </map> 
+   
+ <map name=nameTitle type=string>
+  <row>Title|Prefix|First|Middle|Last|Suffix|Social Security/Tax ID</row>
+ </map>
+ 
+ 
+ <map name=BPnameTitle type=string>
+<table width=100%>
+  <row >Prefix|First|Middle|Last|Suffix|Social Security/Tax ID</row>
+    <row name=BP_APPL> 
+       <select td="width=8%" name=NAME_PFX/>
+       <text   td="width=16%" name=NAME_FIRST  title='first name'  maxLength=14 size=14 validate='>=2&&SP'/>
+       <text   td="width=15%" name=NAME_MIDDLE title='middle name' maxLength=14 size=10 validate='OK&&SP'/>
+       <text   td="width=16%" name=NAME_LAST   title='last name' maxLength=30 size=14/>
+       <select td="width=8%" name=NAME_SFX/>
+       <array> <text name=SSN_TIN_NBR validate='==0|==9&&NA' title='social security' maxlength=9 size=9 />
+               <select name=SSN_TIN_CODE title='social security type' />
+       </array>
+    </row>
+</table>
+ </map>
+ 
+ 
+ 
+ <map name=name type=string>
+    <row> 
+       <label   td="width=15%" value="###0"  />
+       <select td="width=8%" name=NAME_PFX/>
+       <text   td="width=16%" name=NAME_FIRST  title='first name'  maxLength=14 size=14 validate='>=2&&SP'/>
+       <text   td="width=15%" name=NAME_MIDDLE title='middle name' maxLength=14 size=10 validate='OK&&SP'/>
+       <text   td="width=16%" name=NAME_LAST   title='last name' maxLength=30 size=14/>
+       <select td="width=8%" name=NAME_SFX/>
+       <array> <text name=SSN_TIN_NBR validate='==0|==9&&NA' title='social security' maxlength=9 size=9 />
+               <select name=SSN_TIN_CODE title='social security type' /></array>
+   </row>
+ </map>
+ 
+ <map name=nameForSUC type=string>
+    <row> 
+       <label   td="width=15%" value="###0"  />
+       <select td="width=8%" name=NAME_PFX/>
+       <text   td="width=16%" name=NAME_FIRST  title='first name'  maxLength=14 size=14 validate='>=2&&SP'/>
+       <text   td="width=15%" name=NAME_MIDDLE title='middle name' maxLength=14 size=10 validate='OK&&SP'/>
+       <text   td="width=16%" name=NAME_LAST   title='last name' maxLength=30 size=14/>
+       <select td="width=8%" name=NAME_SFX/>
+       <array> <text name=SSN_NBR validate='==9^d&&NA' title='social security' maxlength=9 size=9 />
+               <select name=SSN_TYPE title='social security type' /></array>
+   </row>
+ </map>
+ 
+ <map name=namessn type=string>
+   <map:nameTitle />
+   <map:name param="###0" />
+ </map>
+ 
+ <map name=namessnForSUC type=string>
+   <map:nameTitle />
+   <map:nameForSUC param="###0" />
+ </map>
+ 
+ 
+  <map name=dobNoAge type=string>
+  <table name=DOB >
+   <assign title|DOB_YEAR="year of Birth Date" title|MONTH="month of Birth Date" title|DAY='date of Birth Date' 
+           require|DOB_DAY="{#dob_month},{#dob_year},{#dob_day}^^^###1" />
+   <row>&nbsp;|&nbsp;(mm)|&nbsp;(dd)|&nbsp;(yyyy)</row> 
+   <row>                            
+     ###0<text onkeyup='nextField(this.form,value,2,{dob_day_qq})' onblur='checkMonth(this)' 
+           maxlength=2 size=2 name=MONTH title="the month"/>
+     <text onkeyup='nextField(this.form,value,2,{dob_year_qq})' onblur='checkDay(this)' maxlength=2 size=2 name=DAY />
+     <text onblur=checkYear(this) maxlength=4 size=4 name=YEAR/>
+   </row>
+  </table>
+  <HIDDEN NAME="BIRTH_DATE" />
+ </map> 
+ 
+ <map name=bpdob type=string>
+  <table >
+    <row>&nbsp;|&nbsp;(mm)|&nbsp;(dd)|&nbsp;(yyyy)</row> 
+   <row>                            
+     ###0<text onkeyup='nextField(this.form,value,2,{dob_day_qq})' onblur='checkMonth(this)' 
+           maxlength=2 size=2 name=MONTH title="the month"/>
+     <text onkeyup='nextField(this.form,value,2,{dob_year_qq})' onblur='checkDay(this)' maxlength=2 size=2 name=DAY />
+     <text onblur=checkYear(this) maxlength=4 size=4 name=YEAR/>
+   </row>
+  </table>
+  <HIDDEN NAME="DT" />
+ </map> 
+ 
+ <map name=date type=string>
+  <table >
+    <row>(mm)|&nbsp;(dd)|&nbsp;(yyyy)</row> 
+   <row>                          
+     <text onkeyup='nextField(this.form,value,2,{day_qq})' onblur='checkMonth(this)' 
+           maxlength=2 size=2 name=MONTH title="the month"/>
+     <text onkeyup='nextField(this.form,value,2,{year_qq})' onblur='checkDay(this)' maxlength=2 size=2 name=DAY />
+     <text onblur=checkYear(this) maxlength=4 size=4 name=YEAR/>
+   </row>
+  </table>
+  <HIDDEN NAME="DT" />
+  </map> 
+ 
+ 
+ <map name=address type=string>
+  <ctable param="2|8">
+   <assign onclick|non_us_radio="domesticFlagPost(this.form,{non_us_radio_qq},{owner_postal_code_qq},{addr_city_qq},
+     {addr_state_qq},{addr_zip_qq},{addr_zip_override_qq});this.form.OWNER_POSTAL_CODE.onchange();"
+     onfocus|ADDR_CITY,ADDR_ZIP='cityStateZipPost({$name_qq},this.form,{non_us_radio_qq})'
+    onchange|ADDR_STATE=='cityStateZipPost({$name_qq},this.form,{non_us_radio_qq})'  
+     flag|ADDR_STREET1="and|{#non_us_radio}_Y"
+     require|ADDR_STREET1="{#ADDR_STREET1},{#ADDR_STATE},{#ADDR_ZIP},{#ADDR_CITY}^^^###0" 
+     flag|ADDR_STATE="and|{#non_us_radio}_N"
+     require|ADDR_STATE="{#ADDR_STREET1},{#OWNER_POSTAL_CODE}^^^###0" />
+   Mail Address  :<map:radio param="NON_US|U.S|non-U.S"/> 
+   Street Address:<text name=ADDR_STREET1 maxLength=30 size=30 title='street address1'/>
+   Street Address:<text name=ADDR_STREET2 maxLength=30 size=30 title='street address2'/>
+   Street Address:<text name=ADDR_STREET3 maxLength=30 size=30 title='street address3'/>
+   Street Address:<text name=ADDR_STREET4 maxLength=30 size=30 title='street address4'/>
+             City:<text name=ADDR_CITY maxLength=15 size=15 title='city' />
+            State:<array><select name=ADDR_STATE title='state' />&nbsp;Zip:
+                  <text name=ADDR_ZIP size=5 maxLength=5 title='zip code' validate='==0|==5&&NA' />  &nbsp;Zip Override:<checkbox name=ADDR_ZIP_OVERRIDE value="Y"/>
+                  <hidden name=OWNER_COUNTRY_NAME  /></array> 
+   Country:<select name=OWNER_POSTAL_CODE title='foreign country'  
+            onchange="setCountry({$form},{OWNER_POSTAL_CODE_qq},{owner_country_name_qq},{non_us_radio_qq})"
+            onload.0 ="loadCountry({$form},{OWNER_POSTAL_CODE_qq},{country_name_qq})"
+            onload   ="checkRadioButton({$form},{OWNER_POSTAL_CODE_qq},{non_us_radio_qq})"/>
+   </ctable> 
+ </map>
+  
+ 
+ <map name=address1 type=string>
+  <ctable param="2|8">
+   Mailing Address:| |
+   Street Address:<text name=ADDR_STREET1 maxLength=30 size=30 title='street address1' />
+   Street Address:<text name=ADDR_STREET2 maxLength=30 size=30 title='street address2' />
+   Street Address:<text name=ADDR_STREET3 maxLength=30 size=30 title='street address3' />
+   Street Address:<text name=ADDR_STREET4 maxLength=30 size=30 title='street address4' />
+             City:<text name=ADDR_CITY maxLength=15 size=15 title='city' />
+            State:<array><select name=ADDR_STATE title='state' />&nbsp;Zip:
+                  <text name=ADDR_ZIP size=5 maxLength=5 title='zip code' validate='==5^d&&NA' />  &nbsp;Zip Override:<checkbox name=ADDR_ZIP_OVER value="Y"/></array> 
+   Country:<select name=POSTAL_CODE/>
+  </ctable> 
+ </map>
+ 
+ <map name=telephone type=string>
+  <ctable param="2|5">
+  Type    ##|Phone Number   Ext|
+  Business:<array><text name=BUSINESS_PHONE maxLength=16 size=14 validate='==0|>=10&&PHONE' title='enter business or home phone number' />
+                  <text name=BUSINESS_PHONE_EXT size=4 maxLength=4 validate='OK&&NA' /></array> 
+      Home:<array><text name=HOME_PHONE maxLength=16 size=14 validate='==0|>=10&&PHONE' title='home phone number' />
+                  <text name=HOME_PHONE_EXT size=4 size=4 maxLength=4 validate='OK&&NA' /></array> 
+    Mobile:<text name=MOBILE_PHONE maxLength=16 size=14 validate='==0|>=10&&PHONE' />
+       Fax:<text name=FAX_PHONE maxLength=16 size=14 validate='==0|>=10&&PHONE' /> 
+ </ctable>       
+</map>
+
+<map name=telephone2 type=string>
+  <ctable param="2|5">
+  Type    ##|Phone Number   Ext|
+  Business:<array><text name=BUSINESS_PHONE maxLength=16 size=14 validate='==0|>=10&&PHONE' title='enter business or home phone number' />
+                  <text name=BUSINESS_PHONE_EXT size=4 maxLength=4 validate='OK&&NA' /></array> 
+      Home:<array><text name=HOME_PHONE maxLength=16 size=14 validate='==0|>=10&&PHONE' title='home phone number' />
+                  <text name=HOME_PHONE_EXT size=4 size=4 maxLength=4 validate='OK&&NA' /></array> 
+    Mobile:<text name=MOBILE_PHONE maxLength=16 size=14 validate='==0|>=10&&PHONE' />
+       Fax:<text name=FAX_PHONE maxLength=16 size=14 validate='==0|>=10&&PHONE' /> 
+ </ctable>       
+</map>
+
+<map name=caption type=string>
+    <table cellSpacing=0 cellPadding=0 width=760 border=0>
+        <row class="None" > 
+        <label td="class=signupheadcolor align=left" value="###0 - STP Basic Profile"/> 
+        </row> 
+    </table>
+</map> 
+
+<map name=caption1 type=string>
+    <table cellSpacing=0 cellPadding=0 width='100%' border=0>
+        <row class="None" > 
+        <label td="class=signupheadcolor align=left" value="###0"/> 
+        </row> 
+    </table>
+</map> 
+
+<map name=caption2 type=string>
+    <table cellSpacing=0 cellPadding=0 width='600' border=0>
+        <row class="None" > 
+        <label td="class=signupheadcolor align='center' " value="###0"/> 
+        </row> 
+    </table>
+</map> 
+
+<map name=caption3 type=string>
+    <table cellSpacing=0 cellPadding=0 width='100%' border=0>
+        <row class="None" > 
+        <label td="class=signupheadcolor align='center' " value="###0"/> 
+        </row> 
+    </table>
+</map> 
+
+<map name=radio3 type=string>
+    <array><radiobutton  name=###0_0 value='R1'/> ###1 
+           <radiobutton  name=###0_1 value='R2'/> ###2
+           <radiobutton  name=###0_2 value='R3'/> ###3</array>
+</map> 
+
+<map name=acat type=string>
+   <table width='100%' name='###0'>
+   <row td.width='20%|60%|20%'>Firm Number|Institution Name|Account Number</row>
+   <row ><select name=FIRM_NUMBER  />
+         <select name=FIRM_NAME    />
+         <text name='ACATID'/></row>
+   <row td.colspan='3'>ACATS Comments</row>
+   <row td.colspan='3'><text name=ACATS_COMMENTS/></row>
+   </table>
+</map>
+
+<map name=template  type=string>
+   <table width='300' height=400>
+   <row ><${type} name=${name} value=${value}   /></row>
+   </table>
+</map>
+

@@ -1,0 +1,11 @@
+<app name=web folder=C:\myApp\hibernate>
+  <hibernateconfig package="com.jm.hibernate">
+          dialect:HSQL
+            class:Address
+              url:"jdbc:hsqldb:file:C:\CBP\Derby\MyTest\Test"
+           driver:org.hsqldb.jdbcDriver
+             user:sa
+         password:none
+  </hibernateconfig>
+</app>
+

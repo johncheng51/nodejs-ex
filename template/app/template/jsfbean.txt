@@ -1,0 +1,31 @@
+package ${package};
+
+import java.io.Serializable;
+import javax.faces.bean.*; 
+import java.util.List;
+import javax.faces.bean.*;
+import javax.faces.model.SelectItem;
+   
+
+@ManagedBean(name="${lclass}") 
+@SessionScoped
+public class ${class} extends AbsJSFBean implements Serializable {
+  <#list fields as field>
+  private ${field.type} ${field.name};
+  </#list> 
+
+<#list fields as field>
+ //${mark}${field.name}${mark}
+ public ${field.type} get${field.cname}(){
+ return this.${field.name};
+ }
+
+</#list> 
+
+<#list fields as field>
+ public void set${field.cname}(${field.type} ${field.name}) {
+ this.${field.name}=${field.name};
+ }
+
+</#list>
+

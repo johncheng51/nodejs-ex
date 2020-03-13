@@ -1,0 +1,27 @@
+Available commands
+=====================================================
+help: print all available command
+folder                : show all top folder of application
+entity    file        : generate model source file
+webconfig file        : generate webconfig file
+folder    file        : show files in folder
+file folder name      : show files with folder name
+uiang                 : create related class for Angulars
+                      : example uiang app.form.userComponent
+                   
+uihtml model template : example: uihtml user index
+react                 : create react 
+uijsf model template  : example: uijsf user index
+                        take user.xml from ui folder 
+                        write index.xhtml to template
+uistruts model templ bean : ex. uistruts test User.pages.login LoginAction
+                            take test.xml from ui folder
+                            write User.pages.login.jsp for template
+                            write LoginAction for Java class
+extjs model templ         : ex. extjs extjs hello_world
+                            take extjs.xml from ui folder
+                            write hello_world.js for template
+moduleUpdate              : recontruct the angular module 
+model model               : create 
+angroute                  : create angular route
+=====================================================

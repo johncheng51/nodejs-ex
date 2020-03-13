@@ -1,0 +1,182 @@
+$$_newclass
+package ${package};
+
+public class ${class} {
+  ${props}
+  public ${class}(${newargs})
+  {
+    ${newargslist}
+  }
+    
+}
+__end
+
+$$_operator
+package ${package};
+
+import java.math.BigDecimal;
+import com.jm.cal.*;
+
+public class ${class} extends Operator{
+    public ${class}() {
+        super(MINUS,TWO);
+    }
+
+    @Override
+    public Operand execute(Operand[] operands) {
+         Operand operand1=tran(operands[0]);
+         Operand operand2=tran(operands[1]);
+         BigDecimal neg  =operand2.getValue().negate();
+         operand1.setValue(operand1.getValue().add(neg));
+         return operand1;
+    }
+}
+__end
+
+$$_task1
+package ${package};
+import com.jm.model.*;
+public class ${class} extends AbstractTask {
+ public ${class}() {
+       //To do Here
+    }
+    @Override
+    public void run() {
+    
+    }
+}
+__end
+
+$$_taskclass
+package ${package};
+import com.jm.model.Distance;
+import com.jm.model.Sample;
+import java.util.List;
+import java.util.concurrent.CountDownLatch;
+
+public class ${class} extends AbstractNKTask{
+    public ${class}(
+     ${newargs}
+    ) 
+    {
+        super(${params});
+    }
+}
+__end
+
+$$_runnable
+    @Override
+    public Runnable get${class}( ${newargs}){
+       return new  ${class}(${params});
+    }
+__end
+
+$$_testmain
+package ${package};
+import com.jm.test.AbstractMain;
+import java.math.BigDecimal;
+import java.math.MathContext;
+import java.math.RoundingMode;
+import java.util.concurrent.Callable;
+public class ${class} extends AbstractMain{
+  private static ${class} main = new ${class}();
+      public static void main(String[] args) {
+        main.run();
+    }
+  
+  public void run() {
+    // To Do Here
+  }
+}
+__end
+
+$$_bootmain
+package ${package};
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+@SpringBootApplication
+public class ${class} {
+
+        public static void main(String[] args) {
+            SpringApplication.run(${class}.class, args);
+        }
+//put-method
+}
+__end
+
+$$_controller
+package ${package};
+
+import java.util.Map;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+@Controller
+public class ${class} {
+ //put-method  
+}
+__end
+
+$$_reqmap
+    @RequestMapping("${a}")
+    public String welcome(Map<String, Object> model) {
+        model.put("message", "${a} " + this.message);
+        return "welcome";
+    }
+__end
+
+
+$$_list
+ public static List<String> getLowCaloricDN(List<${b}> ${a}){
+    return ${a}.stream().
+    filter(x -> x.get${c}()>400.0)
+    .sorted(comparing(${b}::get${c}))
+    .map(${b}::get${d}).collect(toList());
+    }
+__end
+
+$$_addlist
+        List<${b}> list = new ArrayList<${b}>();
+        for(${b} ${a}: ${a}es){
+         if (${a}.getCalories()>300) list.add(${a}); 
+            
+        }
+        return list;
+__end 
+
+$$_addlist1
+        List<${b}> list = new ArrayList<${b}>();
+        for(int i=0;i<${a}es.size();i++){
+          ${b} ${a}=${a}es.get(i);
+          if (${a}.getCalories()>300) list.add(${a});
+        }
+        return list;
+__end
+
+$$_print
+       Arrays.asList(${a}).stream().
+       forEach(System.out::println);
+__end
+
+
+$$_lista
+
+    public static List<String> getLowCaloricJDK7(List<${b}> ${a}){
+        List<${b}> lowCaloricDishes = new ArrayList<>();
+        for(${b} d: ${a}){
+            if(d.get${c}() > 400){
+                lowCaloricDishes.add(d);
+            }
+        }
+        List<String> lowCaloricDishesName = new ArrayList<>();
+        Collections.sort(lowCaloricDishes, new Comparator<Dish>() {
+            public int compare(${b} d1, ${b} d2){
+                return Integer.compare(d1.get${c}(), d2.get${c}());
+            }
+        });
+        for(${b} d: lowCaloricDishes){
+            lowCaloricDishesName.add(d.get${d}());
+        }
+        return lowCaloricDishesName;
+    }
+__end

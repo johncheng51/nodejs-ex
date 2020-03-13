@@ -1,0 +1,33 @@
+ <?xml version="1.0"?>
+ <!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+ <hibernate-mapping>
+ <class name="${classname}"   table="${table}">
+  <#list fields as field>
+    <#switch field.op>
+      <#case "prop">
+           <property  name="${field.name}"
+              type="${field.type}"  column="${field.colname}"/>
+           <#break>
+      <#case "id">
+           <id name="${field.name}"  type="${field.type}" column="${field.colname}">
+                <generator class="native"/>
+           </id>
+           <#break>
+       <#case "set">
+            <set name="${field.name}" table="${field.assotable}">
+               <key column="${field.colname}" />
+            <one-to-many class="${pack}.${field.assoclass}" />
+            </set>
+           <#break>
+    <#case "obj">
+        <many-to-one  name="${field.name}"
+                 cascade="all" column="${field.colname}"
+                 class="${pack}.${field.assoclass}"  />
+            <#break>
+   </#switch>
+   </#list>
+ </class>
+
+</hibernate-mapping>

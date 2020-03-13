@@ -1,0 +1,18 @@
+ <def_temp var=templ value='Hello {firstname} {lastname}!,Nice to meet you!'/>
+ <form var=form temp=templ>
+  <items>
+    <text name=firstname/>
+    <text name=lastname/>
+    <text name=middlename/>
+    <checkbox name=me />
+  </items>
+ </form>
+ <popup panel=form />
+ 
+
+
+
+
+  
+  
+ 

@@ -1,0 +1,7 @@
+$$_printitem 
+    <input type="${type}" ${attr} ng-model='map["${name}"]'/>
+__end
+
+$$_if
+   ng-show='map["${key}"]${value}'
+__end  

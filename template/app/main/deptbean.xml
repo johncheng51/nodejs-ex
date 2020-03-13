@@ -1,0 +1,6 @@
+<app name=web folder=C:\myJava\Jason>
+  <modelproc package='com.hibernate.model'>
+      dept:javabean
+  </modelproc>
+</app>
+

@@ -1,0 +1,17 @@
+ <context text|password="class=form-control"  />
+ <container> 
+   <row  >User Name:  <text name='username' /></row>
+   <row  >Password:   <password name='password' /></row>
+   <row  >Select:     <array>Yes<checkbox name='pick'/> </array> </row>
+   <row  >ROLES:      <select  name='role'  data='Guest,Manager,Admin' /></row>
+   <row  ><submit value='Submit' /></row>
+ </container>   
+
+
+
+
+
+
+  
+  
+ 

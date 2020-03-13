@@ -1,0 +1,94 @@
+$$_head
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+     xmlns="http://java.sun.com/xml/ns/javaee" 
+     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+     http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" 
+     version="3.0">
+  <display-name>${value}</display-name>
+__end
+
+$$_end
+ </web-app>
+__end
+
+$$_welcome
+   <welcome-file-list>
+      <welcome-file>${value}</welcome-file>
+   </welcome-file-list>
+__end
+
+$$_servlet
+     <servlet>
+        <servlet-name>${currentname}</servlet-name>
+        <servlet-class>${classname}</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>${currentname}</servlet-name>
+        <#list words as word>
+         <url-pattern>${word}</url-pattern>
+        </#list>
+    </servlet-mapping>    
+__end
+
+
+$$_java
+ package com.jm.servlet;
+ import java.io.IOException;
+ import javax.servlet.*;
+ import javax.servlet.http.*;
+ public class ${value} extends Service {
+   
+   
+    public void doGet(HttpServletRequest request, 
+                      HttpServletResponse response) 
+                      throws ServletException, IOException 
+    {
+        show(this.getClass(),request,response);
+    }
+
+    public void doPost(HttpServletRequest request, 
+                      HttpServletResponse response) 
+                      throws ServletException, IOException 
+    {
+        show(this.getClass(),request,response);
+    }
+}
+
+__end
+
+$$_samplePage
+ <html>
+ <head>
+ <title>MyTest</title>
+ </head>
+ <body>
+	
+	<h2>Welcome To Test</h2>
+	<table width='400' height='200'>
+          ${value}
+          </table>	           
+ </body>
+ </html>
+__end
+
+$$_indexStart
+ <html>
+ <head>
+ <title>Spring MVC Tutorial Series by Crunchify.com</title>
+ </head>
+ <body>
+	
+	<div style="text-align:center">
+		<h2>Available URL Link</h2>
+__end
+$$_indexEnd
+	</div>
+ </body>
+ </html>
+__end
+
+$$_link
+     <a href="${value}" >${value}</a>
+__end

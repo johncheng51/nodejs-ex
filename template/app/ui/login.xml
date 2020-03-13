@@ -1,0 +1,22 @@
+
+ <context button='onclick=userSubmit({$name_qq}) onmouseout=setClass(this,false) onmouseover=setClass(this,true) class=btn' 
+          text='class=textbox' password='class=textbox' />
+ <table      cellpadding="2" width="300">
+   <map:title param='USER LOGIN|2' />
+   <row  >User Name:  <text name=user /></row>
+   <row  >Password:   <password name=password /></row>
+   <row  >Comfirm:    <password name=comfirm  /></row>
+   <row>Role:       
+   <array ><checkbox name=usercheck />User  #
+   <checkbox name=managercheck />Manager  #
+   <checkbox name=admincheck   />Admin</array></row>
+   <row  td.align='center' td.colspan='2'><array >#  #<button name='<%=button%>' value='<%=button%>'/></array></row>
+   <row  td.align='center' td.colspan='2'><div td='class=signuperror' name=message /></row>
+ </table>
+
+
+
+
+  
+  
+ 

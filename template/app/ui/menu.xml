@@ -1,0 +1,9 @@
+  <menu name='menu' pos='100'>
+    Security^Add User,addUser.jsp^Show Users,showUsers.jsp^Change Password,changePwd.jsp^
+    Add  Address,addAddress.jsp^Edit Parameters,editParam.jsp^RestFul Console,restConsole.jsp^Welcome,Welcome.jsp|
+    Business^Order,order.jsp|
+    Save^
+  </menu>
+
+
+

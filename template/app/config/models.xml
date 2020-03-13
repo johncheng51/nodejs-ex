@@ -1,0 +1,146 @@
+<model type=class name=home table=HOME>
+            p.i.id:i
+         firstName:s
+          lastName:s
+             email:s
+         homePhone:s
+         workPhone:s
+       address.$addressen:o2o   
+</model>
+<model type=class name=addressen table=ADDRESSEN>
+           p.if.id:i
+           street:s
+             city:s
+          zipcode:s
+         home.$home:o2ox
+</model>
+
+<model type=class name=test table=HOME>
+         firstName:s
+          lastName:s
+             email:s
+         homePhone:s
+         workPhone:s
+</model>
+
+<model type=class name=stocka table=STOCKA>
+        p.i.id:i
+          name:s
+  stockitems.$stockitem:om   
+</model>
+
+<model type=class name=stockitem table=STOCKITEM>
+        p.i.id:i
+        create:D
+         price:d
+        stocka.$stocka:mo 
+</model>
+
+<model type=class name=test table=TEST>
+         desc:@ss
+        p.i.id:i
+          name:s
+       streets:s
+          city:s
+         state:s
+           zip:s
+     
+</model>
+
+<model type=class name=depttest table=DEPTEST>
+        p.iu.id:s
+          name:s
+          desc:s
+       streets:s
+          city:s
+         state:s
+           zip:s
+     v.version:i
+      a.create:c
+</model>
+
+<model type=class name=dept1 table=DEPT>
+        p.i.id:i
+          name:s
+          desc:s
+       streets:s
+          city:s
+         state:s
+           zip:s
+</model>
+
+
+<model type=class name=dept table=DEPT>
+        p.i.id:i
+          name:s
+          desc:s
+       streets:s
+          city:s
+         state:s
+           zip:s
+       parentId:i
+   parent.$dept:obj,parentId
+   children.$dept:set,parentId
+</model>
+
+<model type=class name=user table=USER>
+        p.i.id:i
+        lastname:s
+        firstname:s
+        login:s
+     password:s
+        home_address.$address:@e,home
+        bill_address.$address:@e,bill 
+</model>
+
+<model type=class name=person table=JM_PERSON>
+ addresses.$address:set,id
+             p.i.id:s
+          firstName:s
+           lastName:s
+              email:s
+         homePhone:s
+         workPhone:s
+</model>
+
+<model type=class name=home table=HOME>
+             p.ie.id:@Address
+           firstName:s
+           lastName:s
+              email:s
+         homePhone:s
+         workPhone:s
+</model>
+
+<model type=class name=address>
+           street:s
+             city:s
+          zipcode:s
+</model>
+
+<model type=class name=vehiclex>
+           p.i.vehicleId:s
+             vehicleName:s
+          price:d
+</model>
+
+
+// type.name:args
+<model type=path name=mySpring>
+           modelview.load:show
+            redirect.test:show
+</model>
+
+<model type=path name=struts>
+             0.test0:menu.test0
+             0.test1:menu.test1
+             0.test2:menu.test2
+ 
+</model>
+
+<model type=method name=struts>
+        test|string|test:{ 
+                           test++;
+                         }     
+ 
+</model>

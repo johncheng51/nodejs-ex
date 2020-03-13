@@ -1,0 +1,35 @@
+import { Component, OnInit } from '@angular/core';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  AbstractControl
+} from '@angular/forms';
+
+@Component({
+  selector: 'app-${lclass}',
+  templateUrl: './${lclass}.component.html',
+  styleUrls: ['./${lclass}.component.css']
+})
+export class ${class}Component implements OnInit {
+  myForm: FormGroup;
+  ###property###
+
+  ngOnInit() {
+  }
+
+  constructor(fb: FormBuilder) {
+    this.myForm = fb.group({
+      ###validate###
+    });
+    ###assign###
+  }
+
+  someMethod() {
+    alert(this.sku.value);
+  }
+  onSubmit(form: any): void {
+    console.log('you submitted value:', form.sku);
+  }
+
+}

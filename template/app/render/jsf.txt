@@ -1,0 +1,40 @@
+$$_map 
+      text->inputText,password->inputSecret,submit->commandButton
+      msg->outputText,msgfmt->outputFormat,link->commandLink,select->selectOneMenu
+      checkbox->selectBooleanCheckbox,selects->selectManyMenu,list->selectManyListbox
+      radiobutton->selectOneRadio,checkboxs->selectManyCheckbox
+__end
+$$_printitem
+   <h:${type} id='${name}' ${attr}  value='${args}' />
+__end
+
+$$_printaction
+ <h:${type} id='${name}' ${attr} value='${value}' action='${args}'/>
+__end
+
+$$_printajax
+ <h:${type} id='${name}' ${attr} value='${value}' >
+  <f:ajax  render='${render}' execute='${execute}'/>
+ </h:${type}>
+__end
+
+$$_printfmt
+ <h:${type} id='${name}' ${attr}  value='${args}' >
+  <#list words as word>
+    <f:param value='${word}' />
+  </#list>
+ </h:${type}>
+__end
+
+$$_printlink
+  <h:${type} id='${name}' action="${args}">
+       <h:graphicImage library="images" name="${image}"
+                style="border: 0px; margin-right: 1em;"/>
+  </h:${type}>
+__end
+
+$$_printselect
+   <h:${type} id='${name}' ${attr}  value="${args}" required="true">
+        <f:selectItems value="${argslist}"/>
+   </h:${type}>
+__end

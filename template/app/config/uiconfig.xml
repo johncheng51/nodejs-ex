@@ -1,0 +1,54 @@
+<css>
+    table=cellSpacing=0 cellPadding=0 border=0"
+      row=class=signupcellcolor 
+ label.td=class=textbox     vAlign=top   align=left 
+   div.td=class=signuptext  vAlign=top   align=left 
+ array.td=class=textbox     vAlign=top   align=left 
+   msg.td=class=textbox
+</css>
+<macro>
+   ctable->class:com.jm.ui.UITable
+   ttable->map:title
+</macro>
+
+<prop>
+  all.folder    =c:\webapps\myWeb
+  ang1x.folder  =c:\webapps\ang1x
+  struts.folder =c:\webapps\struts2
+  jsf.folder    =c:\webapps\jsfTest
+  ang.folder    =c:\angular2\my-app
+  extjs.folder  =c:\webapps\ch01
+  react.folder  =c:\webapps\my-ang
+          jsf =WEB-INF,xhtml ,java,jsfbean  ,com.jm.model
+          html=WEB-INF,html  ,java,javabean ,com.jm.model
+        struts=WEB-INF,jsp   ,java,javabean ,com.jm.action
+        ang   =src,html,tc   ,angbean       ,hello
+        react =.  ,html,js   ,angbean       ,hello
+        ang1x =.  ,html,js   ,ang1x         ,hello
+      extjs =null,js,js,extjsbean,xxxxx 
+      skip.0=def,react,app,h1,h2,h3,h4,h5,h6,p,form,ui,ul,li,popup,route,expr
+      skip.1=span
+</prop>
+<render>
+   <jsf>
+      text->inputText,password->inputSecret,submit->commandButton
+      msg->outputText,msgfmt->outputFormat,link->commandLink,select->selectOneMenu
+      checkbox->selectBooleanCheckbox,selects->selectManyMenu,list->selectManyListbox
+      radiobutton->selectOneRadio,checkboxs->selectManyCheckbox
+   </jsf>
+   <struts>
+    text->textfield,msg->property,password->password
+   </struts>
+   <extjs>
+    text->textfield
+   </extjs>
+</render>
+<properties>
+          pattern=<url-pattern>/%s</url-pattern>
+          beanend=</beans>
+          mapend =</servlet-mapping>
+          link     =<a href="%s/check?req=123">%s/check?req=123</a><br>
+          tablec   =<tr><td  align="right">%s</td><td><input type="%s" name="%s" id="%s" %s/></td></tr>
+          puts     =<!--Put Data Here-->
+          pute     =<!--Put Data End-->
+</properties>

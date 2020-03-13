@@ -1,0 +1,6 @@
+<app folder=C:\AI-Prog\SpringORMwithTX>
+  <modelproc package='com.jm.model'>
+      address:hid
+  </modelproc>
+</app>
+

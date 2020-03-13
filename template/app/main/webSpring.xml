@@ -1,0 +1,17 @@
+<app name=web folder=C:\myApp\tomcat6\webapps\spring>
+  <webinf>
+         name:myTest  
+      welcome:index.html
+       spring:{
+                   name:mySpring
+                resolve:jstl
+                package:com.jm.control
+                  class:MySpringMVC
+                    map:welcome.jsp,welcome.html
+                    url:welcome
+              }
+      
+       
+  </webinf>
+</app>
+

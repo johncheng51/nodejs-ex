@@ -1,0 +1,31 @@
+package ${package};
+
+import com.jm.abs.AbsModel;
+import javax.persistence.*;
+import java.io.Serializable;
+
+@Embeddable
+public class ${class} extends AbsModel implements Serializable {
+public ${class}() {
+        super("${params}");
+    }
+
+<#list fields as field>
+      @Column(name = "${field.uname}", length = 255, nullable = false )
+      private ${field.type} ${field.name};
+</#list>
+
+<#list fields as field>
+ public ${field.type} get${field.cname}(){
+ return this.${field.name};
+ }	
+</#list>
+       
+<#list fields as field>
+ public void set${field.cname}(${field.type} ${field.name}) {
+ this.${field.name}=${field.name};
+ }
+</#list>
+
+}
+

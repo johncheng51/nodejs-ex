@@ -1,0 +1,20 @@
+$$_import
+ import ${value} from './${value}.js';
+__end
+
+$$_makelist
+  public List<SelectItem> get${method}(){
+       return makeList("${data}");
+  }
+__end
+
+$$_makeaction
+ @Action(value="${action}" , results={
+ <#list maps as map>
+  @Result( name=${map.key} ,location="pages/${map.value}.jsp"),
+ </#list>
+ })
+ public String ${method}() {
+		return SUCCESS;
+	}
+__end

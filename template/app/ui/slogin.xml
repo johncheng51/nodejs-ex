@@ -1,0 +1,11 @@
+<context text|password|msg='class=textbox' 
+                &a="td.align=center td.colspan=2 td.class=textbox" />
+                <actions execute:Login='s.login:f.fail:i.login' />                
+                <h4>Enter your username and password to login to your portfolio.</h4> 
+		<form action="Login">
+                 <map:title param='USER LOGIN|2' />
+    		 <row>User Name:<text name="username"/></row>
+     		 <row>Password:<password name="password"/></row>
+                  <row &a> <link action='Login' value='Login Again' /></row>
+    		 <row><submit/><msg name="username"/></row>
+</form>	

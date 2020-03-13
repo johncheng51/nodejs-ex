@@ -1,0 +1,48 @@
+$$_simple
+        @RequestMapping("/${path}")
+	public void ${method}(HttpServletResponse response) 
+        {
+                String message = "<br><div style='text-align:center;'>"+
+				 "<h3>Map to Simple</h3>" +
+                                 "<h3>PATH is ${path}</h3>" +
+                                 "</div><br><br>";
+		try {response.getOutputStream().print(message);}
+                catch(Exception e) {}
+	}
+__end
+
+$$_modelview	
+        @RequestMapping("/${path}")
+	public ModelAndView ${method}(${class} ${obj}) 
+        {           
+		ModelAndView mv= 
+                  new ModelAndView("${view}", "${obj}", ${obj});
+                return mv;
+	}
+ __end
+
+$$_path
+        @RequestMapping(value={"/${path}/{${arg}}"})
+        @ResponseBody
+        public String ${method}(@PathVariable("${arg}") ${argtype} ${arg})
+        {
+	   return "${path} with ${arg}="+${arg};
+        }
+__end
+
+$$_arg
+        @RequestMapping("/${path}")
+        @ResponseBody
+        public String ${method}(@RequestParam("${arg}") ${argtype} ${arg})
+        {
+	  return "${method} with ${arg}= "+${arg};
+        }
+__end
+
+$$_redirect
+        @RequestMapping("/${path}")
+	public void ${method}(HttpServletResponse response) 
+        {                
+		${function}(request,response);
+	}
+__end

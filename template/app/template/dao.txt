@@ -1,0 +1,10 @@
+package ${package};
+
+import com.jm.model.*;
+import org.springframework.stereotype.Component;
+@Component("${lclass}Dao")
+public class ${class}Dao extends GenericDAOImpl{
+    public ${class}Dao(){
+        super(${class}.class);
+    }
+}

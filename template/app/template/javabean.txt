@@ -1,0 +1,33 @@
+package ${package};
+//${mark}import${mark}
+import java.util.*;
+import com.jm.abs.*;
+import java.io.Serializable;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Generated;
+import org.hibernate.annotations.GenerationTime;
+import org.hibernate.annotations.CollectionOfElements;
+import org.hibernate.annotations.IndexColumn;
+
+//${mark}table${mark}
+public class ${class} extends AbsModel implements Serializable{
+<#list fields as field>
+  private ${field.type} ${field.name};
+</#list>
+
+
+<#list fields as field>
+ //${mark}${field.name}${mark}
+ public ${field.type} get${field.cname}(){
+ return this.${field.name};
+ }
+
+</#list>
+
+<#list fields as field>
+ public void set${field.cname}(${field.type} ${field.name}) {
+ this.${field.name}=${field.name};
+ }
+</#list>
+}
+

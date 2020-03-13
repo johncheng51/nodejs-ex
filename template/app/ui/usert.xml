@@ -1,0 +1,18 @@
+ <context text|password|msg='class=textbox' &a="td.align=center td.colspan=2 td.class=textbox" />
+ <table      cellpadding="2" width="300">
+   <map:title param='USER DEMO|2' />
+   <row  >User Name:  <text name='username' /></row>
+   <row  >Password:   <password name='password' /></row>
+   <row  >Select:     <array>Yes<checkbox name='pick'/> </array> </row>
+   <row  >ROLES:      <select  name='role'  data='Guest,Manager,Admin' /></row>
+   <row &a><submit value='Submit' /></row>
+ </table>    
+
+
+
+
+
+
+  
+  
+ 

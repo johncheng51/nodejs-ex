@@ -1,0 +1,9 @@
+angular.module('app',[])
+		.controller('${name}', ${name});
+		function ${name}($scope) {
+			${method}
+                $scope.initialize=function() {
+			${prop}	
+			}        
+                $scope.initialize();                       
+		}

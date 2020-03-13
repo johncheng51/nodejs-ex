@@ -1,0 +1,14 @@
+<app name=web folder=C:\myApp\tomcat6\webapps\spring>
+  <webinf package=com.jm>
+         name:myTest  
+      welcome:index.html
+      servlet:{
+                 js:JavaScript
+               test:Test
+               rest:RestFul
+                xml:DoXml
+              }
+       
+  </webinf>
+</app>
+

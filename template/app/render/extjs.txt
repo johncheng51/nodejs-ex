@@ -1,0 +1,61 @@
+
+$$_map
+    text->textfield
+__end
+
+$$_printitem
+        {
+            xtype:       '${type}',
+            fieldLabel : '${value}',
+            name       : '${name}'
+        }
+__end
+
+$$_def_temp
+       var ${var} = Ext.create('Ext.Template', [
+        <#list words as word>
+         '${word}',
+        </#list>
+     ]);
+__end
+
+$$_popup
+        Ext.onReady(function() {
+        Ext.create('Ext.window.Window', {
+        height   : 200,
+        width    : 200,
+        closable : false,
+        title    : 'Input needed.',
+        border   : false,
+        layout   : 'fit',
+        items    : ${value}
+    }).show();
+
+});
+__end
+
+$$_form
+var ${var} = Ext.create('Ext.form.FormPanel', {
+    itemId      : 'formPanel',
+    frame       : true,
+    layout      : 'anchor',
+    defaultType : 'textfield',
+    defaults    : {
+        anchor     : '-10',
+        labelWidth : 65
+    },
+    ${items},
+    buttons : [
+        {
+            text    : 'Submit',
+            handler : function() {
+                var formPanel = this.up('#formPanel'),
+                    vals      = formPanel.getValues(),
+                    greeting  = ${temp}.apply(vals);
+                Ext.Msg.alert('Hello!', greeting);
+            }
+        }
+    ]
+});
+__end
+

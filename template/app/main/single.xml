@@ -1,0 +1,6 @@
+<app folder="C:\AI-Prog\SpringORMwithTX">
+  <modelproc package='com.jm.model'>
+      vehicletype.vehiclex:hinhsingle
+  </modelproc>
+</app>
+
